@@ -38,5 +38,5 @@ print(f"Looping through {len(questions)} question(s)")
 for q in questions:
     print(q.name)
     for m in q.answer_options:
-      print(m)
+        print(f"-- {m.answer_options()}")
 
