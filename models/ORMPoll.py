@@ -20,6 +20,7 @@ q.name = input('What is your question')
 if q.name[-1] != '?':
     q.name = str(q.name + '?')
 
+if q.name != '':
 
     answer_count = int(input('how many answers '))
 
