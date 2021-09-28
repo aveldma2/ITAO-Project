@@ -8,9 +8,7 @@ session.configure(bind=engine)
 
 from Question import Question
 from Answer import Answer
-
-from sqlalchemy.ext.declarative import declarative_base
-Base = declarative_base()
+from Base import *
 
 Base.metadata.create_all(engine)
 
@@ -19,19 +17,22 @@ ses = session()
 q = Question()
 q.name = input('What is your question')
 
-#if q.name != '':
+if q.name[-1] != '?':
+    q.name = str(q.name + '?')
 
- #   answer_count = int(input('how many answers '))
 
-  #  for i in range(answer_count):
-   #     n = input('answer options:')
-    #    member = Answer(answer=n, question = q)
+    answer_count = int(input('how many answers '))
 
-ses.add(q)
-ses.commit()
+    for i in range(answer_count):
+        n = input('answer options:')
+        answer_options = Answer(option = n, question = q)
+
+    ses.add(q)
+    ses.commit()
 
 questions = ses.query(Question).all()
-#for q in questions:
-  #  print(q)
- #   for m in q.answers:
-     # print(m)
+for q in questions:
+    print(q)
+    for m in q.answers:
+      print(m)
+
