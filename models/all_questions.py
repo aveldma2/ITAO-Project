@@ -17,6 +17,3 @@ qs = ses.query(Question).all()
 
 for q in qs:
     print(q.name)
-    for ans in q.answers:
-        print(ans.option)
-        aq
