@@ -1,9 +1,5 @@
-from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func
-from sqlalchemy.orm import relationship, backref
-from sqlalchemy.ext.declarative import declarative_base
-from Question import Question
 from Base import *
-
+from Question import Question
 
 class Answer(Base):
     __tablename__ = "answers"
