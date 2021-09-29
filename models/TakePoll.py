@@ -15,8 +15,6 @@ ses = session()
 
 qs = ses.query(Question).all()
 
-
-
 take_poll = input('Would you like to take a poll? ')
 
 while take_poll == 'Yes':
@@ -31,8 +29,13 @@ while take_poll == 'Yes':
     for q in q_to_answer:
         if q.id == num:
             print(q.name)
-    answer_to_question = input('What is your answer? ')
+    answer_to_question = int(input('What is your answer? '))
 
+    answer_to_q = ses.query(Answer).all()
+    for a in answer_to_q:
+        #if a.id == answer_to_question:
+           # ses.add()
+            print(q.name)
 
     another_question = input('Would you like to answer another question? ')
     if another_question == 'Yes':

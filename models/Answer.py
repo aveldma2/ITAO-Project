@@ -10,5 +10,6 @@ class Answer(Base):
     question = relationship(Question, backref=backref('answer_options', uselist=True, cascade='delete,all'))
 
     def answer_options(self):
-            return f"{self.option} is an option for {self.question.name}"
+            return f"{self.id} {self.option}"
 
+    #def answer_perc(self):
