@@ -40,12 +40,13 @@ while start_poll == 'Yes':
             ses.commit()
 
     questions = ses.query(Question).all()
+    print(f'Congrats! You have created your poll with {num_questions} question(s)')
     print(f"Looping through {len(questions)} question(s)")
     for q in questions:
-        print(q.id + q.name)
+        print(str(q.id) + ' ' + q.name)
         for m in q.answer_options:
             print(f"-- {m.answer_options()}")
     break
-    
+
 
 
