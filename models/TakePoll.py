@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from Base import *
 from Question import Question
 from Answer import Answer
+from UserAnswers import Response
 
 session = sessionmaker()
 engine = create_engine('sqlite:///question.sqlite')
@@ -29,13 +30,9 @@ while take_poll == 'Yes':
     for q in q_to_answer:
         if q.id == num:
             print(q.name)
-    answer_to_question = int(input('What is your answer? '))
+    res = int(input('What is your answer? '))
 
-    answer_to_q = ses.query(Answer).all()
-    for a in answer_to_q:
-        #if a.id == answer_to_question:
-           # ses.add()
-            print(q.name)
+    response_picks = Response(id = res, answer=)
 
     another_question = input('Would you like to answer another question? ')
     if another_question == 'Yes':
