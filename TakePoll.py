@@ -36,16 +36,16 @@ while take_poll == 'Yes':
     ses.add(r)
     ses.commit()
 
+    res = r.answer_id
+
     responses = ses.query(Response).all()
 
     total = 0
     picked_count = 0
-    lis = []
     for r in responses:
         total = total + 1
-        if r not in lis:
-            lis.append(r)
-    picked_count = len(lis)
+        if r.answer_id == res:
+            picked_count = picked_count + 1
 
     percentage_picked = (picked_count/total)*100
 
