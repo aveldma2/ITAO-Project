@@ -1,9 +1,9 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
-from Base import *
-from Question import Question
-from Answer import Answer
+from models.Base import *
+from models.Question import Question
+from models.Answer import Answer
 
 start_poll = input('Would you like to create a poll? ')
 
@@ -27,6 +27,8 @@ while start_poll == 'Yes':
 
         if q.name[-1] != '?':
             q.name = str(q.name + '?')
+        else:
+            q.name = q.name
 
         if q.name != '':
 

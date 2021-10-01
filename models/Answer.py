@@ -1,5 +1,5 @@
-from Base import *
-from Question import Question
+from models.Base import *
+from models.Question import Question
 
 class Answer(Base):
     __tablename__ = "answers"

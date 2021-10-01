@@ -1,10 +1,10 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
-from Base import *
-from Question import Question
-from Answer import Answer
-from UserAnswers import Response
+from models.Base import *
+from models.Question import Question
+from models.Answer import Answer
+from models.UserAnswers import Response
 
 session = sessionmaker()
 engine = create_engine('sqlite:///question.sqlite')
@@ -32,7 +32,20 @@ while take_poll == 'Yes':
             print(q.name)
     res = int(input('What is your answer? '))
 
-    response_picks = Response(id = res, answer=)
+    r
+
+    responses = ses.query(Response).all()
+
+    total = 0
+    picked_count = 0
+    for r in responses:
+        total = total + 1
+        if r.id == res:
+            picked_count = picked_count + 1
+
+    percentage_picked = (picked_count/total)*100
+
+    print(f'this answer is picked {percentage_picked}% of the time')
 
     another_question = input('Would you like to answer another question? ')
     if another_question == 'Yes':

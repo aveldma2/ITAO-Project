@@ -1,7 +1,9 @@
 import pytest
+
 from models.Question import Question
 from init_db import *
 from models.Answer import Answer
+from models.Base import *
 
 class TestQuestion:
 
@@ -19,5 +21,19 @@ class TestQuestion:
         assert ses.query(Question).count() == 1
 
     def test_name_nonnumeric(self):
-        q = Question('1234')
+        lis = ['1234', '']
+
+        for q in lis:
+            q = Question()
+
         assert p.validate() == False
+
+    def test_question_mark(self):
+        q = Question('question')
+
+        assert q.name == 'question?'
+
+    def test_question_mark(self):
+        q = Question('question?')
+
+        assert q.name == 'question?'
