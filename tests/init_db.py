@@ -8,7 +8,7 @@ def init_db_session(db_path=':memory:'):
     session = sessionmaker()
 
     # setup db in memory, not a file
-    engine = create_engine('sqlite:///{db_path}')
+    engine = create_engine(f'sqlite:///{db_path}')
 
     session.configure(bind=engine)
 

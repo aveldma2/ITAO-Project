@@ -27,8 +27,6 @@ while start_poll == 'Yes':
 
         if q.name[-1] != '?':
             q.name = str(q.name + '?')
-        else:
-            q.name = q.name
 
         if q.name != '':
 

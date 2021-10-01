@@ -6,10 +6,13 @@ class Question(Base):
     name = Column(String)
 
     def validate(self):
-        if len(self.name) == 0:
+        if type(self.name) != str:
             print('not valid?')
             return False
 
-        if type(self.name) != String:
-            print('not valid?')
-            return False
+    def add_questionmark(self):
+        if self.name[-1] != '?':
+            self.name = str(self.name + '?')
+
+        return self.name
+

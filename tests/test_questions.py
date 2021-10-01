@@ -26,14 +26,16 @@ class TestQuestion:
         for q in lis:
             q = Question()
 
-        assert p.validate() == False
+        assert q.validate() == False
 
     def test_question_mark(self):
-        q = Question('question')
-
+        q = Question()
+        q.name = 'question'
         assert q.name == 'question?'
 
-    def test_question_mark(self):
-        q = Question('question?')
+    #def test_question_mark(self):
+     #   q = Question('question?')
 
-        assert q.name == 'question?'
+      #  assert q.name == 'question?'
+
+
