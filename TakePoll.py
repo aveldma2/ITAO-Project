@@ -30,18 +30,22 @@ while take_poll == 'Yes':
     for q in q_to_answer:
         if q.id == num:
             print(q.name)
-    res = int(input('What is your answer? '))
+    r = Response()
+    r.answer_id = int(input('What is your answer? '))
 
-    r
+    ses.add(r)
+    ses.commit()
 
     responses = ses.query(Response).all()
 
     total = 0
     picked_count = 0
+    lis = []
     for r in responses:
         total = total + 1
-        if r.id == res:
-            picked_count = picked_count + 1
+        if r not in lis:
+            lis.append(r)
+    picked_count = len(lis)
 
     percentage_picked = (picked_count/total)*100
 
