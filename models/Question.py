@@ -13,6 +13,13 @@ class Question(Base):
     def add_questionmark(self):
         if self.name[-1] != '?':
             self.name = str(self.name + '?')
-
         return self.name
+
+    def total_response_count(self):
+        total = 0
+        for i in self.answer_options:
+            total = total + i.response_count()
+        return total
+
+    # how do i get it to add a question mark to name attribute
 

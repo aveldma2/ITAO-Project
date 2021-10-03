@@ -30,26 +30,16 @@ while take_poll == 'Yes':
     for q in q_to_answer:
         if q.id == num:
             print(q.name)
-    r = Response()
-    r.answer_id = int(input('What is your answer? '))
 
-    ses.add(r)
+    res = int(input('What is your answer? '))
+
+    res = Response()
+
+    ses.add(res)
     ses.commit()
 
-    res = r.answer_id
+    print(f'{q.total_response_count()} people have taken the question and {res.answer_perc()}% answered this response')
 
-    responses = ses.query(Response).all()
-
-    total = 0
-    picked_count = 0
-    for r in responses:
-        total = total + 1
-        if r.answer_id == res:
-            picked_count = picked_count + 1
-
-    percentage_picked = (picked_count/total)*100
-
-    print(f'this answer is picked {percentage_picked}% of the time')
 
     another_question = input('Would you like to answer another question? ')
     if another_question == 'Yes':
@@ -57,3 +47,6 @@ while take_poll == 'Yes':
     else:
         print('Thanks for taking the poll! ')
         break
+
+#how do we get the answer ids to change per question
+#how do we query for just our specific answer id
