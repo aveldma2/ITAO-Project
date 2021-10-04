@@ -40,10 +40,25 @@ while take_poll == 'Yes' or take_poll == "yes":
     ses.commit()
 
     answers = ses.query(Answer).all()
-    print(f'{answers.total_response_count}')
 
-    #for a in answers:
-     #   print(f'{a.total_response_count()} people have taken the question and {a.answer_perc()}% answered this response')
+    for a in answers:
+        print(f'{a.total_response_count()} people have taken the question and {a.answer_perc()}% answered this response')
+
+    # potential solutions to how we can better show answer percentages (none work yet):
+    #see_results = input(f"Would you like to see results for question {q.id}? ")
+    #while see_results == 'Yes' or see_results == 'yes':
+        #print(Answer.answer_perc(q.id))
+
+    #see_results = True
+    #while see_results == True:
+        #print(f'Total response count: {Answer.total_response_count(r)}')
+        #print(f'Percentage of people who had the same answer: {Answer.answer_perc()}')
+        #see_results = False
+
+    #print(f'{Answer.total_response_count(q.id)} people have answered this question')
+    #for a in q.answer_options:
+     #   print(f'{a.answer_perc()}% answered {q.answer_options[0]}')
+
 
 
     another_question = input('Would you like to answer another question? ')
