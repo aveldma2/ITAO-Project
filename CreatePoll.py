@@ -34,7 +34,7 @@ while start_poll == 'Yes':
             for i in range(answer_count):
                 n = input('answer options:  ')
                 answer_options = Answer(option=n, question=q)
-
+            q.validate()
             ses.add(q)
             ses.commit()
 

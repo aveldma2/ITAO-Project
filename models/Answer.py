@@ -23,6 +23,6 @@ class Answer(Base):
         if len(self.response_picks) > 0:
             return int((self.response_count()/self.total_response_count())*100)
         else:
-            return None
+            return 0
 
 

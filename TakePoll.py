@@ -41,7 +41,7 @@ while take_poll == 'Yes':
 
     answers = ses.query(Answer).all()
     for a in answers:
-        print(f'{a.total_response_count()} people have taken the question and {a.answer_perc()}% answered this response')
+        print(f'Question {a.question_id}, Answer {a.id}: {a.total_response_count()} people have taken the question and {a.answer_perc()}% answered this response')
 
 
     another_question = input('Would you like to answer another question? ')

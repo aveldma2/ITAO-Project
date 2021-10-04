@@ -29,17 +29,19 @@ class TestQuestion:
 
         assert q.validate() == False
 
-   # def test_question_mark(self):
-     #   q = Question()
-      #  q.name = 'question'
-      #  assert q.namewq == 'question?'
+    def test_question_mark(self):
+        q = Question()
+        q.name = 'question'
+        q.add_questionmark()
+        assert q.name == 'question?'
 
-   # def test_question_mark_runs(self):
-       # q = Question()
+    def test_question_mark_runs(self):
+        q = Question()
 
-        #q.name = 'question?'
+        q.name = 'question?'
+        q.add_questionmark()
 
-        #assert q.namewq == 'question?'
+        assert q.name == 'question?'
 
 class TestResponse:
 
