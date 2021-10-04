@@ -34,7 +34,8 @@ if q.name != '':
     ses.commit()
 
 questions = ses.query(Question).all()
-print(f"Looping through {len(questions)} question(s)")
+numquestion = len(questions)
+print("Looping through {numquestion} question(s)")
 for q in questions:
     print(q.name)
     for m in q.answer_options:

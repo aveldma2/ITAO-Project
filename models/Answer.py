@@ -1,5 +1,5 @@
-from Base import *
-from Question import Question
+from models.Base import *
+from models.Question import Question
 
 class Answer(Base):
     __tablename__ = "answers"
@@ -12,4 +12,17 @@ class Answer(Base):
     def answer_options(self):
             return f"{self.id} {self.option}"
 
-    #def answer_perc(self):
+    def response_count(self):
+        return len(self.response_picks)
+
+
+    def total_response_count(self):
+        return self.question.total_response_count()
+
+    def answer_perc(self):
+        if len(self.response_picks) > 0:
+            return int((self.response_count()/self.total_response_count())*100)
+        else:
+            return None
+
+

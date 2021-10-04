@@ -1,14 +1,14 @@
 # import what we need to get the db up and running
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from orm.models.base import *
+from models.Base import *
 
 # this method will be called at the beginning of tests to setup a db in memory
-def init_db_session():
+def init_db_session(db_path=':memory:'):
     session = sessionmaker()
 
     # setup db in memory, not a file
-    engine = create_engine('sqlite:///:memory:')
+    engine = create_engine(f'sqlite:///{db_path}')
 
     session.configure(bind=engine)
 

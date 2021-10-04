@@ -1,10 +1,10 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
-from Base import *
-from Question import Question
-from Answer import Answer
-from UserAnswers import Response
+from models.Base import *
+from models.Question import Question
+from models.Answer import Answer
+from models.UserAnswers import Response
 
 session = sessionmaker()
 engine = create_engine('sqlite:///question.sqlite')
@@ -30,9 +30,19 @@ while take_poll == 'Yes':
     for q in q_to_answer:
         if q.id == num:
             print(q.name)
-    res = int(input('What is your answer? '))
 
-    response_picks = Response(id = res, answer=)
+    r = int(input('What is your answer? '))
+
+    res = Response()
+    res.answer_id = r
+
+    ses.add(res)
+    ses.commit()
+
+    answers = ses.query(Answer).all()
+    for a in answers:
+        print(f'{a.total_response_count()} people have taken the question and {a.answer_perc()}% answered this response')
+
 
     another_question = input('Would you like to answer another question? ')
     if another_question == 'Yes':
@@ -40,3 +50,6 @@ while take_poll == 'Yes':
     else:
         print('Thanks for taking the poll! ')
         break
+
+#how do we get the answer ids to change per question
+#how do we query for just our specific answer id
