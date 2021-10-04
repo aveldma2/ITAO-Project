@@ -22,11 +22,10 @@ while start_poll == 'Yes':
         q = Question()
         q.name = input('What is your question?  ')
 
+        q.add_questionmark()
+
         ses.add(q)
         ses.commit()
-
-        if q.name[-1] != '?':
-            q.name = str(q.name + '?')
 
         if q.name != '':
 
