@@ -7,8 +7,8 @@ from models.Answer import Answer
 
 start_poll = input('Would you like to create a poll? ')
 
-while start_poll == 'Yes':
-    num_questions = int(input('How many questions in your poll'))
+while start_poll == 'Yes' or start_poll == "yes":
+    num_questions = int(input('How many questions in your poll: '))
 
     for i in range(num_questions):
         session = sessionmaker()
