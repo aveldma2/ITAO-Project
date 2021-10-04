@@ -18,7 +18,7 @@ qs = ses.query(Question).all()
 
 take_poll = input('Would you like to take a poll? ')
 
-while take_poll == 'Yes':
+while take_poll == 'Yes' or take_poll == "yes":
     questions = ses.query(Question).all()
 
     for q in questions:
@@ -40,8 +40,10 @@ while take_poll == 'Yes':
     ses.commit()
 
     answers = ses.query(Answer).all()
-    for a in answers:
-        print(f'{a.total_response_count()} people have taken the question and {a.answer_perc()}% answered this response')
+    print(f'{answers.total_response_count}')
+
+    #for a in answers:
+     #   print(f'{a.total_response_count()} people have taken the question and {a.answer_perc()}% answered this response')
 
 
     another_question = input('Would you like to answer another question? ')
