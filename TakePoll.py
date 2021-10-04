@@ -31,7 +31,7 @@ while take_poll == 'Yes':
         if q.id == num:
             print(q.name)
 
-    r = int(input('What is your answer? '))
+    r = input('What is your answer? ')
 
     res = Response()
     res.answer_id = r
