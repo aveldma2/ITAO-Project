@@ -9,6 +9,9 @@ class Question(Base):
         if type(self.name) != str:
             print('not valid?')
             return False
+        if len(self.answer_options) <= 1:
+            raise 'Must have multiple answers'
+            return False
 
     def add_questionmark(self):
         if self.name[-1] != '?':

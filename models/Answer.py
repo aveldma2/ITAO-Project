@@ -24,3 +24,5 @@ class Answer(Base):
             return int((self.response_count()/self.total_response_count())*100)
         else:
             return None
+
+
