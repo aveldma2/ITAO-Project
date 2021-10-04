@@ -31,14 +31,17 @@ while take_poll == 'Yes':
         if q.id == num:
             print(q.name)
 
-    res = int(input('What is your answer? '))
+    r = int(input('What is your answer? '))
 
     res = Response()
+    res.answer_id = r
 
     ses.add(res)
     ses.commit()
 
-    print(f'{q.total_response_count()} people have taken the question and {res.answer_perc()}% answered this response')
+    answers = ses.query(Answer).all()
+    for a in answers:
+        print(f'{a.total_response_count()} people have taken the question and {a.answer_perc()}% answered this response')
 
 
     another_question = input('Would you like to answer another question? ')

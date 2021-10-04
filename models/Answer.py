@@ -20,4 +20,7 @@ class Answer(Base):
         return self.question.total_response_count()
 
     def answer_perc(self):
-        return int((self.response_count()/self.total_response_count())*100)
+        if len(self.response_picks) > 0:
+            return int((self.response_count()/self.total_response_count())*100)
+        else:
+            return None
