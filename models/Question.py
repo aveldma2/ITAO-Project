@@ -24,5 +24,4 @@ class Question(Base):
             total = total + i.response_count()
         return total
 
-    # how do i get it to add a question mark to name attribute
 

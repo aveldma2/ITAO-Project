@@ -7,8 +7,8 @@ from models.Answer import Answer
 
 start_poll = input('Would you like to create a poll? ')
 
-while start_poll == 'Yes':
-    num_questions = int(input('How many questions in your poll'))
+while start_poll == 'Yes' or start_poll == "yes":
+    num_questions = int(input('How many questions in your poll: '))
 
     for i in range(num_questions):
         session = sessionmaker()
@@ -22,11 +22,10 @@ while start_poll == 'Yes':
         q = Question()
         q.name = input('What is your question?  ')
 
+        q.add_questionmark()
+
         ses.add(q)
         ses.commit()
-
-        if q.name[-1] != '?':
-            q.name = str(q.name + '?')
 
         if q.name != '':
 
@@ -35,7 +34,7 @@ while start_poll == 'Yes':
             for i in range(answer_count):
                 n = input('answer options:  ')
                 answer_options = Answer(option=n, question=q)
-
+            q.validate()
             ses.add(q)
             ses.commit()
 
