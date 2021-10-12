@@ -7,10 +7,14 @@ from models.Answer import Answer
 
 start_poll = input('Would you like to create a poll? ')
 
+# feedback: just use lower() function to escape case
 while start_poll == 'Yes' or start_poll == "yes":
     num_questions = int(input('How many questions in your poll: '))
 
     for i in range(num_questions):
+        # feedback: do the session stuff once, outside of the loop
+        # then add and commit as much as you want
+        
         session = sessionmaker()
         engine = create_engine('sqlite:///question.sqlite')
         session.configure(bind=engine)
@@ -46,6 +50,3 @@ while start_poll == 'Yes' or start_poll == "yes":
         for m in q.answer_options:
             print(f"-- {m.answer_options()}")
     break
-
-
-

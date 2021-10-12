@@ -26,6 +26,8 @@ while take_poll == 'Yes' or take_poll == "yes":
         for m in q.answer_options:
             print(f"-- {m.answer_options()}")
     num = int(input('Which question would you like to answer? '))
+    # feedback: This part looks a little inefficient
+    # use ses.query(Question).get({id}) to get a single question, then you can use .answers (defined as backref in class)
     q_to_answer = ses.query(Question).all()
     for q in q_to_answer:
         if q.id == num:
@@ -43,6 +45,9 @@ while take_poll == 'Yes' or take_poll == "yes":
 
     for a in answers:
         print(f'Question {a.question_id}, Answer {a.id}: {a.total_response_count()} people have taken the question and {a.answer_perc()}% answered this response')
+
+    # feedback: again put this in notes somewhere or github issues (we didn't talk about)
+
 
     # potential solutions to how we can better show answer percentages (none work yet):
     #see_results = input(f"Would you like to see results for question {q.id}? ")
